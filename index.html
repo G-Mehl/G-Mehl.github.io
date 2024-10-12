@@ -1,91 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-        <style>
-            body {
-                margin: 0;
-                overflow: hidden;
-                font-family: Arial, sans-serif; /* Optional: Set a font */
-            }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif; /* Optional: Set a font */
+        }
 
-            #title {
-                position: absolute; /* Allows positioning over the canvas */
-                top: 20px; /* Distance from the top */
-                left: 20px; /* Distance from the left */
-                color: black; /* Text color for contrast */
-                font-size: 24px; /* Font size */
-                z-index: 1; /* Ensure it's above the canvas */
-            }
-        </style>
-    </head>
-    <body>
-        <h1 id="title">Glenn's three.js Test</h1> <!-- Title element -->
-        <script type="module">
-            import * as THREE from './node_modules/three/build/three.module.js'
+        #title {
+            position: absolute; /* Allows positioning over the canvas */
+            top: 20px; /* Distance from the top */
+            left: 20px; /* Distance from the left */
+            color: black; /* Text color for contrast */
+            font-size: 24px; /* Font size */
+            z-index: 1; /* Ensure it's above the canvas */
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">Glenn's three.js Test</h1> <!-- Title element -->
+    <script>
+        // Creating scene
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xffffff); // Set background to white
 
+        // Creating Camera (perspective cam)
+        const camera = new THREE.PerspectiveCamera(
+            75, // F.O.V.
+            window.innerWidth / window.innerHeight, // aspect ratio
+            0.1, // near clipping plane
+            1000 // far clipping plane
+        );
 
-            // Creating scene
-            const scene = new THREE.Scene();
-            scene.background = new THREE.Color(0xffffff); // Set background to white
+        // Creating WebGLRenderer and adding to page
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
 
-            // Creating Camera (perspective cam)
-            const camera = new THREE.PerspectiveCamera(
-                75, // F.O.V.
-                window.innerWidth / window.innerHeight, // aspect ratio
-                0.1, // near clipping plane
-                1000 // far clipping plane
-            );
+        // Basic cube geometry
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshBasicMaterial({ color: 0xff0000 }); // Change color to red
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
 
-            // Creating WebGLRenderer and adding to page
-            const renderer = new THREE.WebGLRenderer();
+        // Create black edges
+        const edges = new THREE.EdgesGeometry(geometry); // Create edges geometry
+        const lineMaterial = new THREE.LineBasicMaterial({ color: 0x000000 }); // Black color for edges
+        const lineSegments = new THREE.LineSegments(edges, lineMaterial); // Create line segments
+        scene.add(lineSegments); // Add edges to scene
+
+        // Create a group to hold both the cube and the edges
+        const cubeGroup = new THREE.Group();
+        cubeGroup.add(cube); // Add cube to the group
+        cubeGroup.add(lineSegments); // Add edges to the group
+        scene.add(cubeGroup); // Add the group to the scene
+
+        // Position camera
+        camera.position.z = 5;
+
+        // Rotate cube
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Rotate cube for animation
+            cubeGroup.rotation.x += 0.01;
+            cubeGroup.rotation.y += 0.01;
+
+            // Render scene from camera perspective
+            renderer.render(scene, camera);
+        }
+
+        // Start the loop
+        animate();
+
+        // Handling window resizing
+        window.addEventListener('resize', () => {
             renderer.setSize(window.innerWidth, window.innerHeight);
-            document.body.appendChild(renderer.domElement);
-
-            // Basic cube geometry
-            const geometry = new THREE.BoxGeometry();
-            const material = new THREE.MeshBasicMaterial({ color: 0xff0000 }); // Change color to red
-            const cube = new THREE.Mesh(geometry, material);
-            scene.add(cube);
-
-             // Create black edges
-            const edges = new THREE.EdgesGeometry(geometry); // Create edges geometry
-            const lineMaterial = new THREE.LineBasicMaterial({ color: 0x000000 }); // Black color for edges
-            const lineSegments = new THREE.LineSegments(edges, lineMaterial); // Create line segments
-            scene.add(lineSegments); // Add edges to scene
-
-            // Create a group to hold both the cube and the edges
-            const cubeGroup = new THREE.Group();
-            cubeGroup.add(cube); // Add cube to the group
-            cubeGroup.add(lineSegments); // Add edges to the group
-            scene.add(cubeGroup); // Add the group to the scene
-
-            // Position camera
-            camera.position.z = 5;
-
-            // Rotate cube
-            function animate() {
-                requestAnimationFrame(animate);
-
-                // Rotate cube for animation
-                cubeGroup.rotation.x += 0.01;
-                cubeGroup.rotation.y += 0.01;
-
-                // Render scene from camera perspective
-                renderer.render(scene, camera);
-            }
-
-            // Start the loop
-            animate();
-
-            // Handling window resizing
-            window.addEventListener('resize', () => {
-                renderer.setSize(window.innerWidth, window.innerHeight);
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-            });
-        </script>
-    </body>
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        });
+    </script>
+</body>
 </html>
