@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Glenn's 3.js Test</title>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
         <style>
             body {
                 margin: 0;
@@ -24,7 +23,10 @@
     </head>
     <body>
         <h1 id="title">My Three.js Scene</h1> <!-- Title element -->
-        <script>
+        <script type="module">
+            import * as THREE from './node_modules/three/build/three.module.js'
+
+
             // Creating scene
             const scene = new THREE.Scene();
             scene.background = new THREE.Color(0xffffff); // Set background to white
