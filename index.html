@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Include Three.js from CDN -->
+    <script type="module">
+        import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.150.0/build/three.module.js';
+        // Your app.js code here or keep it in app.js
+    </script>
 </head>
 <body>
-
     <!-- Navigation Bar -->
     <nav>
         <ul>
@@ -20,19 +24,16 @@
 
     <!-- Portfolio Sections -->
     <div id="portfolio">
-
         <section id="about">
             <h1>About Me</h1>
-            <p>Bio will go here.</p>
+            <p>Your bio goes here.</p>
         </section>
-
         <section id="projects">
             <h2>Projects</h2>
             <div class="project-list">
                 <!-- Add project items here -->
             </div>
         </section>
-
         <section id="skills">
             <h2>Skills</h2>
             <ul>
@@ -41,7 +42,6 @@
                 <li>Skill 3</li>
             </ul>
         </section>
-
         <section id="contact">
             <h2>Contact</h2>
             <form>
@@ -51,10 +51,8 @@
                 <button type="submit">Send</button>
             </form>
         </section>
-
     </div>
 
-    <!-- Add type="module" to the script tag -->
-    <script type="module" src="app.js"></script>
+    <script type="module" src="app.js"></script> <!-- Keep your app.js reference -->
 </body>
 </html>
