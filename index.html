@@ -2,87 +2,109 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <title>Glenn's Interactive Navigation</title>
     <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            font-family: Arial, sans-serif; /* Optional: Set a font */
-        }
-
-        #title {
-            position: absolute; /* Allows positioning over the canvas */
-            top: 20px; /* Distance from the top */
-            left: 20px; /* Distance from the left */
-            color: black; /* Text color for contrast */
-            font-size: 24px; /* Font size */
-            z-index: 1; /* Ensure it's above the canvas */
-        }
+        body { margin: 0; }
+        canvas { display: block; background-color: #f0f0f0; } /* Background color for canvas */
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
-<body>
-    <h1 id="title">Glenn's three.js Test</h1> <!-- Title element -->
+<body>    
     <script>
-        // Creating scene
+        // Scene, camera, renderer
         const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0xffffff); // Set background to white
-
-        // Creating Camera (perspective cam)
-        const camera = new THREE.PerspectiveCamera(
-            75, // F.O.V.
-            window.innerWidth / window.innerHeight, // aspect ratio
-            0.1, // near clipping plane
-            1000 // far clipping plane
-        );
-
-        // Creating WebGLRenderer and adding to page
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
 
-        // Basic cube geometry
-        const geometry = new THREE.BoxGeometry();
-        const material = new THREE.MeshBasicMaterial({ color: 0xff0000 }); // Change color to red
-        const cube = new THREE.Mesh(geometry, material);
-        scene.add(cube);
-
-        // Create black edges
-        const edges = new THREE.EdgesGeometry(geometry); // Create edges geometry
-        const lineMaterial = new THREE.LineBasicMaterial({ color: 0x000000 }); // Black color for edges
-        const lineSegments = new THREE.LineSegments(edges, lineMaterial); // Create line segments
-        scene.add(lineSegments); // Add edges to scene
-
-        // Create a group to hold both the cube and the edges
-        const cubeGroup = new THREE.Group();
-        cubeGroup.add(cube); // Add cube to the group
-        cubeGroup.add(lineSegments); // Add edges to the group
-        scene.add(cubeGroup); // Add the group to the scene
-
-        // Position camera
         camera.position.z = 5;
 
-        // Rotate cube
+        // Load font and create 3D text links
+        const loader = new THREE.FontLoader();
+        loader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', function(font) {
+            const links = [
+                { text: 'Test Cube', url: 'TestCube.html', position: { x: -2, y: 1, z: 0 } },
+                { text: 'Test Lines', url: 'TestLine.html', position: { x: -2, y: 0, z: 0 } }
+            ];
+
+            links.forEach(link => {
+                const geometry = new THREE.TextGeometry(link.text, {
+                    font: font,
+                    size: 0.5,
+                    height: 0.1
+                });
+                geometry.center(); // Center the geometry around its origin
+
+                const material = new THREE.MeshBasicMaterial({ color: 0x0077ff });
+                const textMesh = new THREE.Mesh(geometry, material);
+                textMesh.position.set(link.position.x, link.position.y, link.position.z);
+                textMesh.userData.url = link.url;
+
+                // Create an invisible hover plane
+                const hoverGeometry = new THREE.PlaneGeometry(1.5, 0.5); // Adjust size as needed
+                const hoverMaterial = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0 }); // Invisible
+                const hoverMesh = new THREE.Mesh(hoverGeometry, hoverMaterial);
+                hoverMesh.position.copy(textMesh.position); // Match text position
+                scene.add(hoverMesh);
+
+                scene.add(textMesh);
+            });
+        });
+
+        // Raycaster for detecting mouse interactions
+        const raycaster = new THREE.Raycaster();
+        const mouse = new THREE.Vector2();
+
+        let hoveredText = null; // Stores current hovered text
+
+        window.addEventListener('mousemove', (event) => {
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+            raycaster.setFromCamera(mouse, camera);
+            const intersects = raycaster.intersectObjects(scene.children);
+
+            // Reset the color of previously hovered text
+            if (hoveredText) {
+                hoveredText.material.color.set(0x0077ff); // Original color
+                hoveredText.scale.set(1, 1, 1); // Reset scale
+            }
+
+            if (intersects.length > 0) {
+                hoveredText = intersects[0].object; // Store the hovered text
+                hoveredText.material.color.set(0xffaa00); // Change color on hover
+                hoveredText.scale.set(1.1, 1.1, 1.1); // Scale up on hover
+            } else {
+                hoveredText = null; // Reset if not hovering over text
+            }
+        });
+
+        window.addEventListener('click', () => {
+            raycaster.setFromCamera(mouse, camera);
+            const intersects = raycaster.intersectObjects(scene.children);
+
+            if (intersects.length > 0) {
+                const url = intersects[0].object.userData.url;
+                console.log("Clicked on:", url); // Debug line
+                if (url) {
+                    window.location.href = url;
+                }
+            }
+        });
+
         function animate() {
             requestAnimationFrame(animate);
-
-            // Rotate cube for animation
-            cubeGroup.rotation.x += 0.01;
-            cubeGroup.rotation.y += 0.01;
-
-            // Render scene from camera perspective
             renderer.render(scene, camera);
+
+            // Rotate hovered text
+            if (hoveredText) {
+                hoveredText.rotation.y += 0.05; // Rotate around the Y axis
+            }
         }
 
-        // Start the loop
         animate();
-
-        // Handling window resizing
-        window.addEventListener('resize', () => {
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-        });
     </script>
 </body>
 </html>

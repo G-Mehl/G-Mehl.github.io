@@ -1,5 +1,19 @@
 {
+  "name": "my-threejs-project",
+  "version": "1.0.0",
+  "description": "A simple three.js project for testing",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server"
+  },
   "dependencies": {
+    "my-threejs-project": "file:",
     "three": "^0.169.0"
-  }
+  },
+  "devDependencies": {
+    "@types/three": "^0.169.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
