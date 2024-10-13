@@ -1,19 +1,16 @@
 {
-  "name": "my-threejs-project",
+  "name": "my-threejs-portfolio",
   "version": "1.0.0",
-  "description": "A simple three.js project for testing",
-  "main": "index.html",
+  "description": "My portfolio using Three.js",
+  "main": "app.js",
   "scripts": {
-    "start": "live-server"
+    "start": "live-server src"
   },
   "dependencies": {
-    "my-threejs-project": "file:",
+    "my-threejs-portfolio": "file:",
     "three": "^0.169.0"
   },
   "devDependencies": {
     "@types/three": "^0.169.0"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  }
 }

@@ -1,11 +1,11 @@
 {
-    "compilerOptions": {
-      "target": "es6",
-      "module": "es6",
+  "compilerOptions": {
+      "target": "ES6",
+      "module": "commonjs",
       "checkJs": true
-    },
-    "include": [
-      "*.html",
-      "src/**/*.js"
-    ]
-  }
+  },
+  "include": [
+      "src/**/*",
+      "node_modules/three/**/*"
+  ]
+}
