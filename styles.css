@@ -1,60 +1,25 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: white;
-    overflow: auto; /* Allow scrolling if necessary */
-}
-
-canvas {
-    display: block; /* Prevents scrollbars caused by canvas */
-    position: absolute; /* Ensure it covers the entire screen */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0; /* Ensure the canvas is in the background */
-}
-
-#portfolio {
-    position: relative; /* Change to relative */
-    width: 100%;
-    height: 100%;
+/* Ensure all sections take up the full screen */
+section {
+    height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 1; /* Ensure it appears above the particles */
-}
-
-section {
-    padding: 20px;
     text-align: center;
-    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-    margin: 20px;
-    border-radius: 8px;
+    padding: 20px;
 }
 
-#header {
-    position: absolute; /* Position it above the canvas */
-    top: 20px;
-    left: 20px;
-    color: white; /* Change color as needed */
-    font-size: 24px;
-    font-family: Arial, sans-serif; /* Adjust font as needed */
-    z-index: 1; /* Ensure it appears above the canvas */
-}
-
+/* Navigation Bar */
 nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 2; /* Ensure it appears above everything else */
+    background-color: rgba(0, 0, 0, 0.7); /* Slight transparency */
+    z-index: 1000;
+    padding: 10px;
 }
 
 nav ul {
     list-style: none;
-    padding: 10px;
     display: flex;
     justify-content: center;
 }
@@ -70,11 +35,59 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    text-decoration: underline; /* Add hover effect */
+    text-decoration: underline;
 }
 
-@keyframes gradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+#about {
+    background-color: rgba(27, 27, 27, 0.85); /* Dark background with transparency */
+    color: white;
+}
+
+#projects {
+    background-color: rgba(245, 245, 220, 0.85); /* Soft beige with transparency */
+}
+
+#skills {
+    background-color: rgba(23, 45, 19, 0.85); /* Dark green with transparency */
+    color: white;
+}
+
+#contact {
+    color: white;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    scroll-behavior: smooth;
+}
+
+/* Particle system background */
+#particle-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Send to background */
+    pointer-events: none; /* Prevent interaction with the canvas */
+}
+
+@keyframes aurora {
+    0% { background-position: 0 50%; }
+    50% { background-position: 100% 50%; } /* Midpoint at 50% */
+    100% { background-position: 0 50%; }  /* Return to the start */
+}
+
+.northern-lights {
+    background: linear-gradient(120deg, rgba(0, 255, 123, 0.5), rgba(123, 200, 255, 0.5), rgba(255, 50, 200, 0.5));
+    background-size: 400% 400%;
+    animation: aurora 10s ease-in-out infinite;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1; /* Ensure it's behind everything but above the body */
+    pointer-events: none; /* Prevent interaction */
 }
