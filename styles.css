@@ -3,7 +3,7 @@ section {
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     text-align: center;
     padding: 20px;
 }
@@ -19,11 +19,6 @@ section {
     font-weight: 700;
     font-style: normal;
   }
-
-h1 {
-    font-family: 'Silkscreen', sans-serif;
-    font-size: 60px;
-}
 
 /* Navigation Bar */
 nav {
@@ -57,11 +52,6 @@ nav ul li a {
 
 nav ul li a:hover {
     text-decoration: underline;
-}
-
-#about {
-     /* Dark background with transparency */
-    color: white;
 }
 
 #projects {
@@ -122,15 +112,62 @@ form {
 
 @media (max-width: 600px) {
     nav ul {
-        flex-direction: column;
-    }
-
-    nav ul li {
-        margin: 10px 0;
+        flex-direction: row;
     }
 }
 
-h2 {
+#about {
     display: flex;
-     justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 10px; /* Adjust to move content higher */
+    color: white;
+}
+
+/* Style for the bio section on the left */
+#about .bio {
+    width: 45%; /* 45% of the width for the bio */
+    text-align: left;
+    padding-bottom: 10px;
+}
+
+/* Style for the graphic on the right */
+#about .graphic {
+    width: 45%; /* 45% of the width for the graphic */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #about {
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    #about .bio, #about .graphic {
+        width: 100%; /* Full width on smaller screens */
+        margin-bottom: 20px;
+    }
+}
+
+h1 {
+    font-family: 'Silkscreen', sans-serif;
+    font-size: 70px;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-family: 'Silkscreen', sans-serif;
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.6;
 }
