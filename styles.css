@@ -97,13 +97,13 @@ body, html {
 .northern-lights {
     background: linear-gradient(120deg, rgba(0, 255, 123, 0.5), rgba(123, 200, 255, 0.5), rgba(255, 50, 200, 0.5));
     background-size: 400% 400%;
-    animation: aurora 10s ease-in-out infinite;
+    animation: aurora 8s ease-in-out infinite;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 1; /* Ensure it's behind everything but above the body */
-    pointer-events: none; /* Prevent interaction */
+    z-index: 1;
+    pointer-events: none;
     justify-self: self;
 }
 
@@ -116,6 +116,7 @@ body, html {
     max-width: 400px;
     width: 100%;
     place-self: center;
+    -webkit-text-fill-color: white;
 }
 
 .form-input,
@@ -163,6 +164,9 @@ body, html {
     }
     .modern-form {
         max-width: fit-content;
+    }
+    .bio {
+        font-size: 14px;
     }
 }
 
