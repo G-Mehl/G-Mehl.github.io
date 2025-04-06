@@ -417,10 +417,14 @@ p {
   opacity: 0;
   transform: scale(0.6); /* more dramatic pop */
   transition: all 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  text-align: center;
+  margin: 0 auto;
 }
 .bounce-in.visible {
   opacity: 1;
   transform: scale(1);
+  text-align: center;
+  margin: 0 auto;
 }
 
 .slide-up {
