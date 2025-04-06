@@ -32,12 +32,32 @@
                     With my military experience I bring a strong work ethic, leadership experience, and a genuine desire to help all people.
                     I bring leadership and a problem-solving mindset to software development.</p>
             </div>
+            <div class="graphic">
+                <!-- Headshot or 3d graphic maybe? -->
+            </div>
         </section>
         <section id="projects">
             <div>
                 <h2>Projects</h2>
                 <div class="project-list">
-                <!-- Add project items here -->
+                    <div class="project-card">
+                        <h3>Flight Tracker App</h3>
+                        <p>Real-time flight tracking (Android + OpenSky API + Google Maps)</p>
+                        <a href="https://github.com/G-Mehl/Android-Apps" target="_blank">Github Repo</a>
+                        <a href="#" target="_blank">Live Demo AWS Later</a> <!-- AWS later -->
+                    </div>
+                    <div class="project-card">
+                        <h3>Next Volunteer</h3>
+                        <p>Full-stack volunteer matching (JavaFX + Spring Boot + MySQL)</p>
+                        <a href="https://github.com/G-Mehl/SE-2024Fall-MurphysLaw" target="_blank">Github Repo</a>
+                        <a href="#" target="_blank">Live Demo AWS Later</a> <!-- AWS later -->
+                    </div>
+                    <div class="project-card">
+                        <h3>This website!</h3>
+                        <p> Interactive WebGL portfolio with animations (HTML/CSS/JS)</p>
+                        <a href="https://github.com/G-Mehl/G-Mehl.github.io" target="_blank">Github Repo</a>
+                        <a href="#" target="_blank">Live Demo AWS Later</a> <!-- AWS later -->
+                    </div>
                 </div>
             </div>
         </section>
@@ -45,19 +65,25 @@
             <div>
                 <h2>Skills</h2>
                 <ul>
-                    <li>Skill 1</li>
-                    <li>Skill 2</li>
-                    <li>Skill 3</li>
-                </ul>
+                    <li>Java, JavaFX, Spring Boot (Maven)</li>
+                    <li>MySQL, SQL, Database Design</li>
+                    <li>HTML, CSS, JavaScript, Three.js, React, Bootstrap</li>
+                    <li>Android API, OpenSky API, Google Maps SDK, OpenAPI</li>
+                    <li>Git, GitHub, Version Control, TFS</li>
+                    <li>Linux, Raspberry Pi, Bash Scripting</li>
+                    <li>Software Engineering Principles</li>
+                    <li>AWS (S3, EC2, IAM) – learning in progress</li>
+                  </ul>
             </div>
         </section>
         <section id="contact">
             <div>
                 <h2>Contact Me</h2>
-                <form class="modern-form">
-                    <input class="form-input" type="text" placeholder="Your Name" required>
-                    <input class="form-input" type="email" placeholder="Your Email" required>
-                    <textarea class="form-textarea" placeholder="Your Message" required></textarea>
+                <form class="modern-form" action="https://formspree.io/f/xjvovqzj" method="POST">
+                    <input type="hidden" name="_subject" value="New submission!">
+                    <input class="form-input" type="text" name="name" placeholder="Your Name" required>
+                    <input class="form-input" type="email" name="email" placeholder="Your Email" required>
+                    <textarea class="form-textarea" name="message" placeholder="Your Message" required></textarea>
                     <button type="submit" class="form-button">Send</button>
                 </form>
             </div>
