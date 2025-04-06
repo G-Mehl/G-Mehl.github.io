@@ -1,6 +1,5 @@
 /* Ensure all sections take up the full screen */
 section {
-    min-height: 100vh;
     padding: 20px;
     display: flex;
     justify-content: center;
@@ -64,6 +63,7 @@ nav ul li a:hover {
     color: white;
     text-align: center;
     justify-self: center;
+    overflow-y: auto;
 }
 
 #contact {
@@ -455,3 +455,14 @@ p {
       padding: 10px;
     }
   }
+
+  @media (max-width: 600px) {
+    .skill-pill {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+    .skills-grid {
+        gap: 8px;
+        padding: 10px;
+    }
+}
