@@ -30,7 +30,7 @@
     <div id="portfolio">
         <section id="about">
             <div class="about-container">
-                <div class="bio">
+                <div class="bio fade-in-section">
                     <h1 id="silkscreen-regular">Glenn Mehl</h1>
                     <h3 style="font-weight: 100;">Software Engineer - Veteran - Epistemophile - Serial Optimist</h3>
                     <p>I'm passionate about creating systems that add value to humans as a whole, constantly seeking knowledge, 
@@ -38,13 +38,13 @@
                         With my military experience I bring a strong work ethic, leadership experience, and a genuine desire to help all people.
                         I bring leadership and a problem-solving mindset to software development.</p>
                 </div>
-                <div class="graphic">
+                <div class="graphic fade-in-section">
                     <img src="assets\IMG_5292.PNG" alt="Glenn Mehl">
                 </div>
             </div>
         </section>
         <section id="projects">
-            <div>
+            <div class="fade-left">
                 <h2>Projects</h2>
                 <div class="project-list">
                     <div class="project-card">
@@ -69,7 +69,7 @@
             </div>
         </section>
         <section id="skills" class="northern-lights">
-            <div>
+            <div class="bounce-in">
                 <h2>Skills</h2>
                 <div class="skills-grid">
                     <span class="skill-pill">Java</span>
@@ -108,7 +108,7 @@
             </div>
         </section>
         <section id="contact">
-            <div>
+            <div class="slide-up">
                 <h2>Contact Me</h2>
                 <form class="modern-form" action="https://formspree.io/f/xvgkvgvw" method="POST">
                     <input type="hidden" name="_subject" value="Portfolio Contact Form Submission">
@@ -122,5 +122,25 @@
     </div>
 
     <script type="module" src="app.js"></script> <!-- Keep your app.js reference -->
+    <script>
+        const animatedSections = document.querySelectorAll('.fade-in-section, .fade-left, .bounce-in, .slide-up');
+      
+        const appearOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -250px 0px"
+        };
+      
+        const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          });
+        }, appearOptions);
+      
+        animatedSections.forEach(section => {
+          appearOnScroll.observe(section);
+        });
+      </script>
 </body>
 </html>

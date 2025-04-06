@@ -380,3 +380,43 @@ p {
       margin-top: 10px;
     }
 }
+/* Animation base class */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(60px); /* was 20px */
+    transition: all 1s ease-out; /* slightly slower for smoother effect */
+  }
+  .fade-in-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .fade-left {
+    opacity: 0;
+    transform: translateX(-60px); /* was 40px */
+    transition: all 1s ease-out;
+  }
+  .fade-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .bounce-in {
+    opacity: 0;
+    transform: scale(0.6); /* more dramatic pop */
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  }
+  .bounce-in.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  .slide-up {
+    opacity: 0;
+    transform: translateY(80px); /* more vertical motion */
+    transition: all 1s ease-out;
+  }
+  .slide-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
