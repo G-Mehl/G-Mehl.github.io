@@ -4,7 +4,7 @@ section {
     padding: 20px;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     text-align: center;
     flex-direction: column;
 }
@@ -199,10 +199,11 @@ body, html {
 }
 
 #about {
-    position: relative;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 200px;
     z-index: 10;
-    padding-top: 30px
-}
+  }
 
 /* Graphic / Headshot container */
 .graphic {
@@ -304,16 +305,6 @@ p {
     background-color: #d76f30;
     cursor: default;
 }
-
-section {
-    min-height: 100vh;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    text-align: center;
-    flex-direction: column;
-  }
   
 /* About container mobile fix */
 @media (max-width: 768px) {
@@ -349,4 +340,38 @@ section {
     margin-bottom: 20px;
   }
   
+}
+
+@media (min-width: 769px) {
+    .about-container {
+      align-items: center;
+      padding: 60px 40px;
+    }
+  
+    .bio {
+      text-align: left;
+      padding-right: 30px;
+    }
+  
+    .bio-header {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+  
+    .bio-header h1 {
+      font-size: 72px;
+      margin-bottom: 10px;
+    }
+  
+    .bio-header h3 {
+      font-size: 20px;
+      font-weight: 100;
+      margin-bottom: 20px;
+    }
+  
+    .graphic img {
+      width: 280px;
+      border-radius: 12px;
+      margin-top: 10px;
+    }
 }
