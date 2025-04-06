@@ -1,11 +1,12 @@
 /* Ensure all sections take up the full screen */
 section {
-    height: 100vh;
+    min-height: 100vh;
+    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     text-align: center;
-    padding: 20px;
+    flex-direction: column;
 }
 
 #silkscreen-regular {
@@ -200,6 +201,7 @@ body, html {
 #about {
     position: relative;
     z-index: 10;
+    padding-top: 30px
 }
 
 /* Graphic / Headshot container */
@@ -215,23 +217,6 @@ body, html {
     width: 250px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Responsive: Stack bio + image vertically */
-@media (max-width: 768px) {
-    .about-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .bio {
-        text-align: center;
-    }
-
-    .graphic {
-        margin-top: 20px;
-    }
 }
 
 @media (max-width: 600px) {
@@ -318,4 +303,50 @@ p {
 .skill-pill:hover {
     background-color: #d76f30;
     cursor: default;
+}
+
+section {
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    flex-direction: column;
+  }
+  
+/* About container mobile fix */
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px 20px;
+  }
+
+  .bio {
+    text-align: center;
+    padding: 0 10px;
+    font-size: 16px;
+  }
+
+  .bio-header h1 {
+    font-size: 32px;
+  }
+
+  .bio-header h3 {
+    font-size: 18px;
+  }
+
+  .graphic {
+    margin-top: 20px;
+  }
+
+  .graphic img {
+    width: 160px;
+    max-width: 80vw;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
 }
