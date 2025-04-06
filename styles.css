@@ -431,3 +431,15 @@ p {
     transform: none !important;
   }
 }
+
+@media (max-width: 375px) {
+    .skill-pill {
+      font-size: 12px;
+      padding: 6px 10px;
+    }
+  
+    .skills-grid {
+      gap: 8px;
+      padding: 10px;
+    }
+  }
