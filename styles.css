@@ -339,6 +339,11 @@ p {
     height: auto;
     margin-bottom: 20px;
   }
+
+  #about {
+    padding-top: 50px;
+  }
+
   
 }
 
