@@ -1,5 +1,6 @@
 /* Ensure all sections take up the full screen */
 section {
+    min-height:100vh;
     padding: 20px;
     display: flex;
     justify-content: center;
@@ -470,3 +471,11 @@ p {
         padding: 10px;
     }
 }
+
+@media (max-height: 600px) {
+    section {
+      min-height: auto;
+      padding-top: 100px; /* give breathing room */
+      padding-bottom: 100px;
+    }
+  }
