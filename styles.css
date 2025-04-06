@@ -1,4 +1,3 @@
-/* Ensure all sections take up the full screen */
 section {
     min-height:100vh;
     padding: 20px;
@@ -60,7 +59,7 @@ nav ul li a:hover {
 }
 
 #skills {
-    background-color: rgba(23, 45, 19, 0.85); /* Dark green with transparency */
+    background-color: rgba(23, 45, 19, 0.85);
     color: white;
     text-align: center;
     justify-self: center;
@@ -200,7 +199,7 @@ body, html {
     text-align: left;
 }
 
-/* Optional inner wrapper for centering name & title only */
+
 .bio-header {
     text-align: center;
 }
@@ -396,8 +395,8 @@ p {
 /* Animation base class */
 .fade-in-section {
     opacity: 0;
-    transform: translateY(60px); /* was 20px */
-    transition: all 1s ease-out; /* slightly slower for smoother effect */
+    transform: translateY(60px);
+    transition: all 1s ease-out;
 }
 .fade-in-section.visible {
   opacity: 1;
@@ -406,7 +405,7 @@ p {
 
 .fade-left {
   opacity: 0;
-  transform: translateX(-60px); /* was 40px */
+  transform: translateX(-60px);
   transition: all 1s ease-out;
 }
 .fade-left.visible {
@@ -416,21 +415,23 @@ p {
 
 .bounce-in {
   opacity: 0;
-  transform: scale(0.6); /* more dramatic pop */
+  transform: scale(0.6);
   transition: all 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
   text-align: center;
+  align-items: center;
   margin: 0 auto;
 }
 .bounce-in.visible {
   opacity: 1;
   transform: scale(1);
   text-align: center;
+  align-items: center;
   margin: 0 auto;
 }
 
 .slide-up {
   opacity: 0;
-  transform: translateY(80px); /* more vertical motion */
+  transform: translateY(80px);
   transition: all 1s ease-out;
 }
 .slide-up.visible {
@@ -475,7 +476,7 @@ p {
 @media (max-height: 600px) {
     section {
       min-height: auto;
-      padding-top: 100px; /* give breathing room */
+      padding-top: 100px;
       padding-bottom: 100px;
     }
   }
