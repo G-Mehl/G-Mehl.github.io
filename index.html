@@ -24,16 +24,18 @@
     <!-- Portfolio Sections -->
     <div id="portfolio">
         <section id="about">
-            <div>
-                <h1 id="silkscreen-regular">Glenn Mehl</h1>
-                <h3 style="font-weight: 100;">Software Engineer - Veteran - Epistemophile - Serial Optimist</h3>
-                <p class="bio">I'm passionate about creating systems that add value to humans as a whole, constantly seeking knowledge, 
-                    and I have a special affinity for using computers to deduce conclusions from the exposure of that long term data. 
-                    With my military experience I bring a strong work ethic, leadership experience, and a genuine desire to help all people.
-                    I bring leadership and a problem-solving mindset to software development.</p>
-            </div>
-            <div class="graphic">
-                <!-- Headshot or 3d graphic maybe? -->
+            <div class="about-container">
+                <div class="bio">
+                    <h1 id="silkscreen-regular">Glenn Mehl</h1>
+                    <h3 style="font-weight: 100;">Software Engineer - Veteran - Epistemophile - Serial Optimist</h3>
+                    <p>I'm passionate about creating systems that add value to humans as a whole, constantly seeking knowledge, 
+                        and I have a special affinity for using computers to deduce conclusions from the exposure of that long term data. 
+                        With my military experience I bring a strong work ethic, leadership experience, and a genuine desire to help all people.
+                        I bring leadership and a problem-solving mindset to software development.</p>
+                </div>
+                <div class="graphic">
+                    <img src="assets\IMG_5292.PNG" alt="Glenn Mehl">>
+                </div>
             </div>
         </section>
         <section id="projects">
@@ -64,23 +66,47 @@
         <section id="skills" class="northern-lights">
             <div>
                 <h2>Skills</h2>
-                <ul>
-                    <li>Java, JavaFX, Spring Boot (Maven)</li>
-                    <li>MySQL, SQL, Database Design</li>
-                    <li>HTML, CSS, JavaScript, Three.js, React, Bootstrap</li>
-                    <li>Android API, OpenSky API, Google Maps SDK, OpenAPI</li>
-                    <li>Git, GitHub, Version Control, TFS</li>
-                    <li>Linux, Raspberry Pi, Bash Scripting</li>
-                    <li>Software Engineering Principles</li>
-                    <li>AWS (S3, EC2, IAM) – learning in progress</li>
-                  </ul>
+                <div class="skills-grid">
+                    <span class="skill-pill">Java</span>
+                    <span class="skill-pill">JavaFX</span>
+                    <span class="skill-pill">Spring Boot (Maven)</span>
+                    <span class="skill-pill">MySQL</span>
+                    <span class="skill-pill">SQL</span>
+                    <span class="skill-pill">Database Design</span>
+                    <span class="skill-pill">HTML</span>
+                    <span class="skill-pill">CSS</span>
+                    <span class="skill-pill">JavaScript</span>
+                    <span class="skill-pill">Three.js</span>
+                    <span class="skill-pill">React</span>
+                    <span class="skill-pill">Bootstrap</span>
+                    <span class="skill-pill">Android API</span>
+                    <span class="skill-pill">OpenSky API</span>
+                    <span class="skill-pill">Google Maps SDK</span>
+                    <span class="skill-pill">OpenAPI</span>
+                    <span class="skill-pill">Git</span>
+                    <span class="skill-pill">GitHub</span>
+                    <span class="skill-pill">Version Control</span>
+                    <span class="skill-pill">TFS</span>
+                    <span class="skill-pill">Linux</span>
+                    <span class="skill-pill">Raspberry Pi</span>
+                    <span class="skill-pill">Bash Scripting</span>
+                    <span class="skill-pill">Software Engineering Principles</span>
+                    <span class="skill-pill">AWS (S3, EC2, IAM)</span>
+                    <span class="skill-pill">GitHub Pages</span>
+                    <span class="skill-pill">Apache2</span>
+                    <span class="skill-pill">Maven</span>
+                    <span class="skill-pill">Wireshark</span>
+                    <span class="skill-pill">HTTPS / SSL</span>
+                    <span class="skill-pill">Curriculum Design</span>
+                    <span class="skill-pill">Technical Mentorship</span>
+                  </div>
             </div>
         </section>
         <section id="contact">
             <div>
                 <h2>Contact Me</h2>
                 <form class="modern-form" action="https://formspree.io/f/xvgkvgvw" method="POST">
-                    <input type="hidden" name="_subject" value="New submission!">
+                    <input type="hidden" name="_subject" value="Portfolio Contact Form Submission">
                     <input class="form-input" type="text" name="name" placeholder="Your Name" required>
                     <input class="form-input" type="email" name="email" placeholder="Your Email" required>
                     <textarea class="form-textarea" name="message" placeholder="Your Message" required></textarea>

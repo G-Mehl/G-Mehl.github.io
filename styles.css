@@ -170,43 +170,67 @@ body, html {
     }
 }
 
-#about {
+.about-container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-start;
-    padding-top: 10px; /* Adjust to move content higher */
-    color: white;
+    gap: 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
 }
 
-/* Style for the bio section on the left */
-#about .bio {
-    width: 45%; /* 45% of the width for the bio */
+/* Bio Section on Desktop */
+.bio {
+    flex: 1;
     text-align: left;
-    padding-bottom: 10px;
+}
+
+/* Optional inner wrapper for centering name & title only */
+.bio-header {
     text-align: center;
 }
 
-/* Style for the graphic on the right */
-#about .graphic {
-    width: 45%; /* 45% of the width for the graphic */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.bio,
+.bio-header,
+.bio p {
     color: white;
 }
 
-/* Responsive adjustments */
+#about {
+    position: relative;
+    z-index: 10;
+}
+
+/* Graphic / Headshot container */
+.graphic {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Headshot Image Styling */
+.graphic img {
+    width: 250px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive: Stack bio + image vertically */
 @media (max-width: 768px) {
-    #about {
+    .about-container {
         flex-direction: column;
         align-items: center;
+        text-align: center;
     }
 
+    .bio {
+        text-align: center;
+    }
 
-    #about .bio, #about .graphic {
-        width: 100%; /* Full width on smaller screens */
-        margin-bottom: 20px;
+    .graphic {
+        margin-top: 20px;
     }
 }
 
@@ -268,4 +292,30 @@ p {
 .project-card a:hover {
     color: #d76f30;
     text-decoration: underline;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.skill-pill {
+    background-color: #6bb77b;
+    color: white;
+    font-size: 16px;
+    padding: 10px 16px;
+    border-radius: 50px;
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s ease;
+}
+
+.skill-pill:hover {
+    background-color: #d76f30;
+    cursor: default;
 }
