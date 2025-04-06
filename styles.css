@@ -420,6 +420,7 @@ p {
   text-align: center;
   align-items: center;
   margin: 0 auto;
+  border: 2px solid red;
 }
 .bounce-in.visible {
   opacity: 1;
