@@ -1,3 +1,6 @@
+* {
+    outline: 1px solid red;
+  }
 section {
     min-height:100vh;
     padding: 20px;
@@ -19,6 +22,12 @@ section {
     font-weight: 700;
     font-style: normal;
   }
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 /* Navigation Bar */
 nav {
@@ -420,7 +429,6 @@ p {
   text-align: center;
   align-items: center;
   margin: 0 auto;
-  border: 2px solid red;
 }
 .bounce-in.visible {
   opacity: 1;
